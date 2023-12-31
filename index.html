@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+<body>
+
+    <div id="container">
+        <div id="topBox">
+            <div id="rock">
+                <p>ROCK</p>
+                <div id="image1"></div>
+            </div>
+            <div id="paper">
+                <p>PAPER</p>
+                <div id="image2"></div>
+            </div>
+            <div id="scissors">
+                <p>SCISSORS</p>
+                <div id="image3"></div>
+            </div>
+        </div>
+        <div id="botBox">
+            <div id="left">
+                <p class="player">PLAYER 1</p>
+                <div id="selection1"></div>
+                <div id="leftPhoto"></div>
+            </div>
+            <div id="right">
+                <p class="player">PLAYER 2</p>
+                <div id="selection2"></div>
+                <div id="rightPhoto"></div>
+            </div>
+        </div>
+        <div class="result">
+            <div class="py1">
+                <div id="score1"></div>
+            </div>
+            <div class="py2">
+                <div id="score2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var rock = document.getElementById("rock"),
+            paper = document.getElementById("paper"),
+            scissors = document.getElementById("scissors"),
+            selection1 = document.getElementById("selection1"),
+            selection2 = document.getElementById("selection2"),
+            score1 = document.getElementById("score1"),
+            score2 = document.getElementById("score2"),
+            leftPhoto = document.getElementById("leftPhoto");
+
+        var player1 = "";
+        var player2 = "";
+        var deger = ["rock", "paper", "scissors"];
+        function skor() {
+            score1.innerHTML = player1.length;
+            score2.innerHTML = player2.length;
+        }
+        function right(a) {
+            rightPhoto.style.background = "url("+a+")";
+            rightPhoto.style.backgroundSize = "cover"
+        }
+
+        rock.onclick = function () {
+            x = Math.floor(Math.random() * 3);
+            selection1.innerHTML = "ROCK";
+            leftPhoto.style.background = "url(rock.png)";
+            leftPhoto.style.backgroundSize = "cover"
+            if (x == 0) {
+                selection2.innerHTML = "ROCK";
+                right("rock.png")
+            } else if (x == 1) {
+                selection2.innerHTML = "PAPER";
+                player2 += "1";
+                right("paper.png")
+            } else if (x == 2) {
+                selection2.innerHTML = "SCISSORS";
+                player1 += "1";
+                right("scissors.png")
+            }
+            skor();
+        }
+
+        paper.onclick = function () {
+            x = Math.floor(Math.random() * 3);
+            selection1.innerHTML = "PAPER";
+            leftPhoto.style.background = "url(paper.png)";
+            leftPhoto.style.backgroundSize = "cover";
+            if (x == 0) {
+                selection2.innerHTML = "ROCK";
+                player1 += "1";
+                right("rock.png")
+            } else if (x == 1) {
+                selection2.innerHTML = "PAPER"
+                right("paper.png")
+            } else if (x == 2) {
+                selection2.innerHTML = "SCISSORS"
+                player2 += 1;
+                right("scissors.png")
+            }
+            skor();
+        }
+
+        scissors.onclick = function () {
+            x = Math.floor(Math.random() * 3);
+            selection1.innerHTML = "SCISSORS";
+            leftPhoto.style.background = "url(scissors.png)";
+            leftPhoto.style.backgroundSize = "cover"
+            if (x == 0) {
+                selection2.innerHTML = "ROCK";
+                player2 += "1";
+                right("rock.png")
+            } else if (x == 1) {
+                selection2.innerHTML = "PAPER"
+                player1 += "1";
+                right("paper.png")
+            } else if (x == 2) {
+                selection2.innerHTML = "SCISSORS";
+                right("scissors.png")
+            }
+            skor();
+        }
+
+
+        
+    </script>
+
+
+</body>
+</html>
