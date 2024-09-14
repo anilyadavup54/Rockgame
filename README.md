@@ -1,1 +1,1 @@
-# Rockgame
+# Rock Paper Scissor
